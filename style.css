@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bc-heading: hsla(218, 17%, 62%, 1);
+    --bc-logo: hsla(275, 18%, 79%, 1);
+    --bc-body: hsla(233, 100%, 97%, 1);
+    --bc-tag: hsla(312, 91%, 96%, 1);
+
+    --fc-logo: hsla(0, 0%, 100%, 1);
+    --fc-body: hsla(274, 84%, 12%, 1);
+    --fc-tag: hsla(232, 17%, 35%, 1);
+
+    --ff-logo: 'Staatliches', 'cursive';
+    --ff-texting: 'Palanquin', sans-serif;
+
+    font-size: 62.5%;
+    --fs-heading: 4.0rem;
+    --fs-body: 2.0rem;    
+
+}
+
+body {
+    /* margin: 0 auto; */
+    background: var(--bc-body);
+
+}
+
+header {
+    text-align: center;
+    font-family: var(--ff-logo);
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 27.9rem;
+    left: 0;
+    top: 0;
+    background: var(--bc-heading);
+    z-index: -1;
+}
+
+header img {
+    margin: 3.2rem auto;
+
+    height: 13.7rem;
+    
+    filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.25));
+}
+
+header h1 {
+    font-size: 4.0rem;
+    text-transform: uppercase;
+    line-height: 3.4rem;
+    letter-spacing: 0.05em;
+    font-weight: 400;
+    color: var(--fc-logo);
+    
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    
+    background-color: var(--bc-logo);
+    
+    padding: 0.8rem 8.7rem;
+}
+
+main {
+    margin: 5.2rem auto 6rem;
+    
+    text-align: center;
+    width: 38.4rem;    
+}
+
+main p:first-child {
+    font-family: var(--ff-texting);
+    font-size: var(--fs-body);
+    line-height: 1.5rem;
+        
+    color: var(--fc-body);
+
+    margin: 0 auto 5.7rem;
+    width: 30rem;
+}
+
+.list-of-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 3.6rem;
+
+    animation: downtop 1s 350ms backwards;
+}
+
+.card {
+    position: relative;
+    width: 32rem;
+    margin: 0 auto;
+
+    font-family: var(--ff-logo);
+
+}
+
+.card img {
+    width: 32rem;
+}
+
+
+.card p {
+    animation: topdown 1s 500ms backwards;
+    position: absolute;
+
+    font-family: var(--ff-logo);
+    color: var(--fc-tag);
+    font-size: 2rem;
+    line-height: 3.4rem;
+    letter-spacing: 0.05em;
+
+
+    background: var(--bc-tag);
+    border-radius: 20px;
+
+    top: 1.6rem;
+    right: 1.6rem;
+
+    padding: 0 2.4rem;
+
+}
+
+@keyframes downtop {
+    0% {
+        opacity: 0;
+        transform:translateY(15px)
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes topdown {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
