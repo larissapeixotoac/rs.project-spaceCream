@@ -9,24 +9,34 @@
     --bc-logo: hsla(275, 18%, 79%, 1);
     --bc-body: hsla(233, 100%, 97%, 1);
     --bc-tag: hsla(312, 91%, 96%, 1);
+    --bc-tag-hover: #ffb8f1;
 
     --fc-logo: hsla(0, 0%, 100%, 1);
     --fc-body: hsla(274, 84%, 12%, 1);
-    --fc-tag: hsla(232, 17%, 35%, 1);
+    --fc-body-lg: #fff;
+    --fc-tag-ft: hsla(232, 17%, 35%, 1);
 
     --ff-logo: 'Staatliches', 'cursive';
     --ff-texting: 'Palanquin', sans-serif;
+    --ff-texting-lg: 'Roboto', sans-serif;
+    --ff-footing: 'Open Sans', sans-serif;
+    
 
     font-size: 62.5%;
     --fs-heading: 4.0rem;
-    --fs-body: 2.0rem;    
+    --fs-heading-lg: 4.8rem;
+    --fs-body: clamp(2.0rem, 0.5rem + 3vw, 1.4rem);    
 
 }
 
 body {
-    /* margin: 0 auto; */
     background: var(--bc-body);
+    display: grid;
+}
 
+.page {
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -51,13 +61,13 @@ header img {
     height: 13.7rem;
     
     filter: drop-shadow(0px 6px 6px rgba(0, 0, 0, 0.25));
+
+    animation: topdown 1s 500ms backwards;
 }
 
 header h1 {
-    font-size: 4.0rem;
-    text-transform: uppercase;
+    font-size: var(--fs-heading);
     line-height: 3.4rem;
-    letter-spacing: 0.05em;
     font-weight: 400;
     color: var(--fc-logo);
     
@@ -68,22 +78,26 @@ header h1 {
     padding: 0.8rem 8.7rem;
 }
 
-main {
-    margin: 5.2rem auto 6rem;
-    
-    text-align: center;
-    width: 38.4rem;    
-}
-
-main p:first-child {
+header p {
     font-family: var(--ff-texting);
     font-size: var(--fs-body);
     line-height: 1.5rem;
         
     color: var(--fc-body);
 
-    margin: 0 auto 5.7rem;
+    margin: 5.2rem auto;
     width: 30rem;
+}
+
+.content {
+    margin: 0 auto;
+}
+
+main {
+    margin: 0 auto 6rem;
+    
+    text-align: center;
+    width: 38.4rem;    
 }
 
 .list-of-cards {
@@ -96,37 +110,60 @@ main p:first-child {
 
 .card {
     position: relative;
-    width: 32rem;
     margin: 0 auto;
 
     font-family: var(--ff-logo);
 
+    display: block;
 }
+
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-duration: 700ms;
+}
+
 
 .card img {
     width: 32rem;
+    border-radius: 2rem;
 }
 
+.list-of-cards div:nth-child(5){
+    display: none;
+}
+.list-of-cards div:nth-child(6){
+    display: none;
+}
 
 .card p {
     animation: topdown 1s 500ms backwards;
     position: absolute;
-
+    
     font-family: var(--ff-logo);
     color: var(--fc-tag);
     font-size: 2rem;
     line-height: 3.4rem;
     letter-spacing: 0.05em;
-
-
+    
+    
     background: var(--bc-tag);
     border-radius: 20px;
-
+    
     top: 1.6rem;
     right: 1.6rem;
-
+    
     padding: 0 2.4rem;
+    
+}
 
+.card:hover p {
+    background: var(--bc-tag-hover);
+}
+
+footer {
+    visibility: hidden;
+    width: 0;
 }
 
 @keyframes downtop {
@@ -150,5 +187,171 @@ main p:first-child {
     100% {
         opacity: 1;
         transform: translateY(0px);
+    }
+}
+
+@media (min-width: 768px) {
+    .list-of-cards {
+        display: grid;
+        justify-content: center;
+        gap: 3.2rem;
+        grid-template-areas:
+                    "A B"
+                    "D B"
+                    "D C";                    
+    }
+                
+    .list-of-cards div:nth-child(1){
+        grid-area: A;
+    }
+
+    .list-of-cards div:nth-child(2){
+        grid-area: B;
+    }
+    .list-of-cards div:nth-child(3){
+        grid-area: C;
+    }
+    .list-of-cards div:nth-child(4){
+        grid-area: D;
+    }
+    .list-of-cards div:nth-child(5){
+        grid-area: none;
+    }
+    .list-of-cards div:nth-child(6){
+        grid-area: none;
+    }
+
+    header p {
+        font-family: var(--ff-texting-lg);
+        font-size: 2.4rem;
+        line-height: 2rem;
+
+        width: 60rem;
+    }
+
+}
+
+@media (min-width: 950px) {
+    .list-of-cards {
+        display: grid;
+        justify-content: center;
+        /* gap: 3.2rem; */
+        grid-template-areas:
+                    "A B"
+                    "D B"
+                    "D C"
+                    "E F";                    
+    }
+                
+    .list-of-cards div:nth-child(1){
+        grid-area: A;
+    }
+
+    .list-of-cards div:nth-child(2){
+        grid-area: B;
+    }
+    .list-of-cards div:nth-child(3){
+        grid-area: C;
+    }
+    .list-of-cards div:nth-child(4){
+        grid-area: D;
+    }
+    .list-of-cards div:nth-child(5){
+        grid-area: E;
+        display: block;
+    }
+    .list-of-cards div:nth-child(6){
+        grid-area: F;
+        display: block;
+    }
+
+    header p {
+        font-family: var(--ff-texting-lg);
+        font-size: 2.4rem;
+        line-height: 2rem;
+    }
+}
+
+@media (min-width: 1220px) {   
+    body {
+        background: #fff;
+    }
+
+    .page {
+        flex-direction: row;    
+    }
+
+    body::before {
+        height:100%;
+        width: 37.7rem;
+        left: 0;
+        bottom: 0;
+        right: 0;
+
+        position: fixed;
+    }
+
+    header img {
+        width: 21.4rem;
+        height: 16.7rem;
+    }
+    main {
+        margin-top: 3.2rem;
+    }
+
+    header h1 {
+        width: 37.7rem;
+        font-size: var(--fs-heading-lg);
+
+        padding: 2rem 7.3rem;
+    }
+
+    header p {
+        font-size: var(--fs-body);
+        line-height: 2rem;
+
+        color: var(--fc-body-lg);
+
+        width: 27.5rem;
+    }
+    .list-of-cards {
+        display: grid;
+        justify-content: center;
+        gap: 3.2rem;
+        /* margin: 0 auto 0; */
+        grid-template-areas:
+                    "A B E"
+                    "D B F"
+                    "D C F";                    
+    }
+
+    .card img {
+        max-width: 22rem;
+    }
+      
+    footer {
+        visibility: visible;
+        width: auto;
+
+        font-family: var(--ff-footing);
+        font-size: 1.4rem;
+        line-height: 2.8rem;
+        text-align: center;
+
+        color: var(--fc-tag-ft);
+
+        mix-blend-mode: normal;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: var(--fc-tag-ft);
+        font-weight: bold;
+    }    
+}
+
+@media (min-width: 1440px) {
+    .card img {
+        max-width: 32rem;
     }
 }
